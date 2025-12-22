@@ -1,0 +1,87 @@
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+    /* #0B2447 #19376D #576CBC #A5D7E8 */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #19376D;
+    color: #333;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    background: #576CBC;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.signin-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signin-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #A5D7E8;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #0B2447;
+    border-radius: 5px;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #0B2447;
+    box-shadow: 0 0 3px rgba(0, 123, 255, 0.3);
+}
+
+
+.btn {
+    padding: 10px;
+    font-size: 16px;
+    background: #0B2447;
+    color: #A5D7E8;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #0056b3;
+}
+
+.goLogin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+a{
+    text-decoration: none;
+}

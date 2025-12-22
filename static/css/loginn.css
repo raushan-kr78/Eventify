@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #19376D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.signin-container {
+    background: #576CBC;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+.signin-container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #A5D7E8;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #A5D7E8;
+}
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #0B2447;
+    background-color: #0B2447;
+    color: #A5D7E8;
+    border-radius: 5px;
+}
+.form-group input:focus {
+    border-color: #A5D7E8;
+    outline: none;
+}
+.btn {
+    width: 100%;
+    background: #0B2447;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.btn:hover {
+    background: #0056b3;
+}
+
+.gosignup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+a{
+    text-decoration: none;
+    color: #A5D7E8;
+}

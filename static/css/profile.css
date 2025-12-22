@@ -1,0 +1,156 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    /* padding: 20px; */
+}
+
+header {
+    /* position: fixed; */
+    height: 60px;
+    width: 100%;
+    background-color: #3b5998;
+    box-shadow: 0px 1px 1px rgb(68, 68, 68);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    z-index: 9000;
+}
+
+header.scrolled {
+    background-color: rgba(246, 248, 250, 0.803);
+    box-shadow: 0px 0px 1px rgb(68, 68, 68, 0.5);
+}
+
+header .logo {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-left: 150px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+header .logo a {
+    text-decoration: none;
+    color: #012b5a;
+}
+
+nav {
+    width: 70%;
+    margin-right: 50px;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 50px;
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    color: #012b5a;
+    /* text-shadow: 0px 1px 1px red; */
+
+}
+
+main{
+    display: flex;
+    flex-direction: row-reverse;
+
+}
+
+.profile-container {
+    background: white;
+    width: 40%;
+    margin-right: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #012b5a;
+}
+
+.message {
+    color: green;
+    font-weight: bold;
+}
+
+.upload-form {
+    margin-top: 15px;
+}
+
+input[type="file"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer;
+}
+
+button {
+    background-color: #3b5998;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #012b5a;
+}
+
+.event-list{
+    margin: 20px;
+    width: 60%;
+    text-align: start;
+}
+.event-list h2{
+    color: #012b5a;
+    margin-bottom: 20px;
+}
+.event-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.event-list th,
+.event-list td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.event-list th {
+    background: #3b5998;
+    color: #012b5a;
+}
+
+
+
+@media (max-width: 768px) {
+    .profile-container {
+        width: 80%;
+    }
+}

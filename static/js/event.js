@@ -1,0 +1,1 @@
+let profileImg = document.querySelector('.profile_img');

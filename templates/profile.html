@@ -1,0 +1,81 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="{% static 'css/profile.css'%}">
+
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="logo">
+            <a href="{% url 'event' %}">Eventify</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'event' %}">Home</a></li>
+                <li><a href="{% url 'event' %}#events">Event</a></li>
+                <li><a href="">Contact Us</a></li>
+                <li><a href="">About Us</a></li>
+                <!-- <li>
+              <div class="profile">
+                {% if user.profile_image %}
+                <img id="profileImage" class="nav-profile-image" src="{{ user.profile_image.url }}" alt="">
+                {% else %}
+                <img src="{% static 'images/profile.jpg'%}" alt="profile">
+                {% endif %}
+                <div class="drop-down" id="drop-down">
+                  <h4><a href="{% url 'profile' %}">Profile</a></h4>
+                  <h4><a href="{% url 'signout' %}">Log Out</a></h4>
+                </div>
+              </div>
+            </li> -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="profile-container">
+
+            <h2>Welcome, {{ user.username }}</h2>
+            {% if user.profile_image %}
+            <img id="profileImage" class="profile-image" src="{{ user.profile_image.url }}" alt="Profile Image">
+            {% else %}
+            <p>No profile image uploaded.</p>
+            {% endif %}
+
+            <form id="profileImageForm" class="upload-form" method="POST" action="{% url 'upload_profile_image' %}"
+                enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="profileInput">Upload Profile</label>
+                <input type="file" id="profileInput" name="profile_images">
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+        <section class="event-list" id="registration">
+            <h2> Registration</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reg in register_event%}
+                    <tr>
+                        <td>{{reg.event_name.title}}</td>
+                        <td>{{reg.register_date}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/event.css' %}">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="{% url 'event' %}">Eventify</a>
+            </div>
+            <div class="nav-link">
+                <ul>
+                    <li><a href="{% url 'event' %}">Home</a></li>
+                    <li><a href="{% url 'organizer' %}">Organizers</a></li>
+                </ul>
+                <div class="profile">
+                    <a href="{% url 'organizer_dashboard' %}"><img src="{%static 'images/profile.jpg'%}" alt="" class="profile_img"></a>
+                </div>
+                <div class="profile_and_logout">
+                    <a href="{% url 'signout' %}">Log Out</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="banner">        
+            
+        </div>
+        {% for event in events %}
+        <div class="event-container">
+            <img src="{%static 'images/dance.jpg'%}" alt="#" class="image">
+            <h1 class="event-title">{{ event.title }}</h1>
+            <h4><strong>Organizer:  </strong>{{event.organizer}}</h4>
+            <p class="event-date"><strong>Date:</strong> {{ event.date }}</p>
+            <form method="POST" action="{% url 'register_event' event.id %}">
+                {% csrf_token %}
+                <button type="submit">Register</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    <script src="{%static 'js/event.js'%}"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="logo">
+            <a href="{% url 'event' %}">Eventify</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'event' %}">Home</a></li>
+                <li><a href="#events">Event</a></li>
+                <li><a href="">Contact Us</a></li>
+                <li><a href="">About Us</a></li>
+                <li>
+                    <div class="profile">
+                        {% if user.profile_image %}
+                        <img id="profileImage" class="profile-image" src="{{ user.profile_image.url }}"
+                            alt="">
+                        {% else %}
+                        <img src="{% static 'images/profile.jpg'%}" alt="profile">
+                        {% endif %}
+                        <div class="drop-down" id="drop-down">
+                            <h4><a href="{% url 'profile' %}">Profile</a></h4>
+                            <h4><a href="{% url 'signout' %}">Log Out</a></h4>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="slider">
+            <div class="slides" id="slides">
+                <img src="{% static 'images/city2_img.jpg'%}" alt="slider">
+                <img src="{% static 'images/city_img.jpg'%}" alt="slider">
+                <!-- <img src="city3_img.jpg" alt="slider"> -->
+            </div>
+            <div class="btn">
+                <button class="nav-btn prev">&#10094;</button>
+                <button class="nav-btn next">&#10095;</button>
+
+            </div>
+            <div class="short-desc">
+                <h1>Welcome to Eventify!</h1>
+                <h4> "Where College Events Come to Life!"</h4>
+                <p> Eventify is an all-in-one platform for college students to register campus events with ease.
+                    From cultural fests and tech workshops to seminars and competitions, <br> stay connected and
+                    never miss out on the excitement!</p>
+
+
+                <h6>🎉 Start Exploring. Start Participating!</h6>
+            </div>
+
+        </div>
+        <section class="events" id="events">
+            <div class="events-categories">
+                <ul>
+                    <li><a href="">All</a></li>
+                    <li><a href="">Conference</a></li>
+                    <li><a href="">Sports</a></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="event-container">
+                {% for event in events %}
+
+                <div class="event-card">
+                    <img src="{{event.event_image.url}}" alt="">
+                    <div class="event-detail">
+                        <h2 class="event-title">{{ event.title }}</h2>
+                        <h4 class="event-date-time">
+                            Date : {{ event.date }}
+                        </h4>
+                        <p class="event-desc">{{event.description}}</p>
+                        <form method="POST" action="{% url 'register_event' event.id %}">
+                            {% csrf_token %}
+                            <button type="submit">Register</button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </section>
+    </main>
+
+    <script src="{% static 'js/script.js'%}"></script>
+</body>
+
+</html>
