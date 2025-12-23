@@ -1,0 +1,136 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | College Fest Portal</title>
+    <link rel="stylesheet" href="{% static 'css/about.css'%}">
+
+</head>
+
+<body>
+    <header id="main-header">
+        <div class="logo">
+            <a href="{% url 'event' %}">Eventify</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'event' %}">Home</a></li>
+                <li><a href="{% url 'event' %}#events">Event</a></li>
+                <li><a href="">Contact Us</a></li>
+                <li><a href="{%url 'about' %}">About Us</a></li>
+                <li>
+                    <div class="profile">
+                        {% if user.profile_image %}
+                        <img id="profileImage" class="profile-image" src="{{ user.profile_image.url }}" alt="">
+                        {% else %}
+                        <img src="{% static 'images/profile.jpg'%}" alt="profile">
+                        {% endif %}
+                        <div class="drop-down" id="drop-down">
+                            <h4><a href="{% url 'profile' %}">Profile</a></h4>
+                            <h4><a href="{% url 'signout' %}">Log Out</a></h4>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>About Our Platform</h1>
+        <p>Know the system, the purpose, and the people behind it</p>
+    </section>
+
+    <section class="section">
+        <h2>About The Application</h2>
+        <div class="grid">
+            <div class="glass">
+                <div class="icon">💡</div>
+                <h3>Purpose</h3>
+                <p>This application is designed to digitally manage college fest events, registrations, schedules, and
+                    announcements in a centralized platform.</p>
+            </div>
+            <div class="glass">
+                <div class="icon">⚙</div>
+                <h3>How It Works</h3>
+                <p>Students and teachers can register, explore events, pre-book activities, and stay updated through a
+                    simple and responsive interface.</p>
+            </div>
+            <div class="glass">
+                <div class="icon">🚀</div>
+                <h3>Benefits</h3>
+                <p>Reduces manual work, avoids confusion, improves participation, and ensures smooth coordination of
+                    college fest activities.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>About The College Fest</h2>
+        <div class="timeline">
+            <div class="glass">
+                <h3>Annual Celebration</h3>
+                <p>The college fest brings together students from multiple departments to showcase talent, innovation,
+                    and creativity.</p>
+            </div>
+            <div class="glass">
+                <h3>Event Categories</h3>
+                <p>Includes technical events, cultural programs, management games, workshops, and project exhibitions.
+                </p>
+            </div>
+            <div class="glass">
+                <h3>Collaboration</h3>
+                <p>Encourages teamwork, leadership, and collaboration among students and faculty.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>About The Developer</h2>
+        <div class="glass dev">
+            <img src="https://via.placeholder.com/130" alt="Developer">
+            <div>
+                <h3>raushan kumar,gulshan kumar</h3>
+                <p>Final-year student and aspiring Full-Stack Developer with interest in building clean, functional, and
+                    scalable web applications.</p>
+                <p><strong>Skills:</strong> HTML, CSS, JavaScript, Python, Django</p>
+                <a href="https://github.com/gulshan-pathak10" target="_blank"> GitHub Profile →</a>
+                <a href="https://github.com/raushan-kr78" target="_blank">GitHub Profile →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="cta">
+            <h2>Explore the Platform</h2>
+            <p>Go back and explore events, register, and participate in the fest.</p>
+            <button onclick="location.href='index.html'">Back to Home</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 College Fest Event Management System</p>
+        <p>Developed for Academic Purpose</p>
+    </footer>
+
+    <script>
+        /* Scroll animation */
+        const cards = document.querySelectorAll('.glass');
+        const reveal = () => {
+            cards.forEach(card => {
+                const top = card.getBoundingClientRect().top;
+                if (top < window.innerHeight - 80) {
+                    card.classList.add('show');
+                }
+            });
+        };
+        window.addEventListener('scroll', reveal);
+        reveal();
+    </script>
+
+    <script src="{% static 'js/profile.js'%}"></script>
+</body>
+
+</html>

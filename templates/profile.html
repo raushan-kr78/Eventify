@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
     <link rel="stylesheet" href="{% static 'css/profile.css'%}">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -15,25 +17,25 @@
         <div class="logo">
             <a href="{% url 'event' %}">Eventify</a>
         </div>
-        <nav>
+                <nav>
             <ul>
                 <li><a href="{% url 'event' %}">Home</a></li>
                 <li><a href="{% url 'event' %}#events">Event</a></li>
                 <li><a href="">Contact Us</a></li>
-                <li><a href="">About Us</a></li>
-                <!-- <li>
-              <div class="profile">
-                {% if user.profile_image %}
-                <img id="profileImage" class="nav-profile-image" src="{{ user.profile_image.url }}" alt="">
-                {% else %}
-                <img src="{% static 'images/profile.jpg'%}" alt="profile">
-                {% endif %}
-                <div class="drop-down" id="drop-down">
-                  <h4><a href="{% url 'profile' %}">Profile</a></h4>
-                  <h4><a href="{% url 'signout' %}">Log Out</a></h4>
-                </div>
-              </div>
-            </li> -->
+                <li><a href="{%url 'about' %}">About Us</a></li>
+                <li>
+                    <div class="profile">
+                        {% if user.profile_image %}
+                        <img id="profileImage" class="profile-image" src="{{ user.profile_image.url }}"
+                            alt="">
+                        {% else %}
+                        <img src="{% static 'images/profile.jpg'%}" alt="profile">
+                        {% endif %}
+                        <div class="drop-down" id="drop-down">
+                            <h4><a href="{% url 'signout' %}">Log Out</a></h4>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
@@ -46,7 +48,7 @@
             {% else %}
             <p>No profile image uploaded.</p>
             {% endif %}
-
+            
             <form id="profileImageForm" class="upload-form" method="POST" action="{% url 'upload_profile_image' %}"
                 enctype="multipart/form-data">
                 {% csrf_token %}
@@ -62,6 +64,7 @@
                     <tr>
                         <th>Event Name</th>
                         <th>Date</th>
+                        <th>View</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,13 +72,15 @@
                     <tr>
                         <td>{{reg.event_name.title}}</td>
                         <td>{{reg.register_date}}</td>
+                        <td>view details</td>
+
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </section>
     </main>
-
+        <script src="{% static 'js/profile.js'%}"></script>
 </body>
 
 </html>

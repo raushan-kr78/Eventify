@@ -10,25 +10,34 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="{% url 'event' %}">Eventify</a>
-            </div>
-            <div class="nav-link">
-                <ul>
-                    <li><a href="{% url 'event' %}">Home</a></li>
-                    <li><a href="{% url 'organizer' %}">Organizers</a></li>
-                </ul>
-                <div class="profile">
-                    <a href="{% url 'organizer_dashboard' %}"><img src="{%static 'images/profile.jpg'%}" alt=""
-                            class="profile_img"></a>
-                </div>
-            </div>
+      <header id="main-header">
+        <div class="logo">
+            <a href="{% url 'event' %}">Eventify</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'event' %}">Home</a></li>
+                <li><a href="{% url 'event' %}#events">Event</a></li>
+                <li><a href="">Contact Us</a></li>
+                <li><a href="{%url 'about' %}">About Us</a></li>
+                <li>
+                    <div class="profile">
+                        {% if user.profile_image %}
+                        <img id="profileImage" class="profile-image" src="{{ user.profile_image.url }}" alt="">
+                        {% else %}
+                        <img src="{% static 'images/profile.jpg'%}" alt="profile">
+                        {% endif %}
+                        <div class="drop-down" id="drop-down">
+                            <h4><a href="{% url 'profile' %}">Profile</a></h4>
+                            <h4><a href="{% url 'signout' %}">Log Out</a></h4>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </nav>
     </header>
     <div class="container">
-        <h1>Add Organizer and Event</h1>
+        <h1>Add Event</h1>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
@@ -53,9 +62,15 @@
                 <label for="image">Upload Image</label>
                 <input type="file" id="image" name="event_image" required>
             </div>
-            <button type="submit" class="btn">Add Organizer and Event</button>
+            <div>
+                    <label for="pdf">Upload pdf for more detail</label>
+                    <input type="file" name="pdf" id ="pdf"accept="application/pdf" required>
+                    
+            </div>
+            <button type="submit" class="btn">Add Event</button>
         </form>
     </div>
+            <script src="{% static 'js/profile.js'%}"></script>
 </body>
 
 </html>

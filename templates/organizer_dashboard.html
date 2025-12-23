@@ -20,8 +20,8 @@
         <li><a href="{% url 'event' %}">Home</a></li>
         <li><a href="{% url 'event' %}#events">Event</a></li>
         <li><a href="">Contact Us</a></li>
-        <li><a href="">About Us</a></li>
-        <!-- <li>
+        <li><a href="{%url 'about' %}">About Us</a></li>
+        <li>
           <div class="profile">
             {% if user.profile_image %}
             <img id="profileImage" class="nav-profile-image" src="{{ user.profile_image.url }}" alt="">
@@ -33,45 +33,48 @@
               <h4><a href="{% url 'signout' %}">Log Out</a></h4>
             </div>
           </div>
-        </li> -->
+        </li>
       </ul>
     </nav>
   </header>
 
   <main class="main-content">
-    <div class="profile-container">
+    <div class="gulshan">
 
-      <h2>Welcome, {{ user.username }}</h2>
-      {% if user.profile_image %}
-      <img id="profileImage" class="profile-image" src="{{ user.profile_image.url }}" alt="Profile Image">
-      {% else %}
-      <p>No profile image uploaded.</p>
-      {% endif %}
-
-      <form id="profileImageForm" class="upload-form" method="POST" action="{% url 'upload_profile_image' %}"
-        enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" id="profileInput" name="profile_images" placeholder="upload profile">
-        <button type="submit">Upload</button>
-      </form>
+      <!-- Overview Cards -->
+      <section class="overview-cards">
+        <div class="card">
+          <div class="pencil">
+            <div class="body">Total Events Hosted</div>
+            <div class="tip"></div>
+          </div>
+          <div class="circle">{{organized_events|length}}</div>
+        </div>
+        <div class="card">
+          <div class="pencil">
+            <div class="body">Total Registrations</div>
+            <div class="tip"></div>
+          </div>
+          <div class="circle">{{register_event|length}}</div>
+        </div>
+      </section>
+      <div class="profile-container">
+  
+        <h2>Welcome, {{ user.username }}</h2>
+        {% if user.profile_image %}
+        <img id="profileImage" class="profile-image" src="{{ user.profile_image.url }}" alt="Profile Image">
+        {% else %}
+        <p>No profile image uploaded.</p>
+        {% endif %}
+  
+        <form id="profileImageForm" class="upload-form" method="POST" action="{% url 'upload_profile_image' %}"
+          enctype="multipart/form-data">
+          {% csrf_token %}
+          <input type="file" id="profileInput" name="profile_images" placeholder="upload profile">
+          <button type="submit">Upload</button>
+        </form>
+      </div>
     </div>
-    <!-- Overview Cards -->
-    <section class="overview-cards">
-      <div class="card">
-        <div class="pencil">
-          <div class="body">Total Events Hosted</div>
-          <div class="tip"></div>
-        </div>
-        <div class="circle">{{organized_events|length}}</div>
-      </div>
-      <div class="card">
-        <div class="pencil">
-          <div class="body">Total Registrations</div>
-          <div class="tip"></div>
-        </div>
-        <div class="circle">{{register_event|length}}</div>
-      </div>
-    </section>
     <!-- Quick Actions -->
     <section class="quick-actions">
       <button><a href="{% url 'organizer'%}">Create New Event</a></button>

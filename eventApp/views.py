@@ -11,6 +11,10 @@ from django.http import JsonResponse
 def event(request):
     events = Event.objects.all().order_by('-id')
     return render(request, 'index.html', {'events': events})
+@login_required
+def about(request):
+    # events = Event.objects.all().order_by('-id')
+    return render(request, 'about.html')
 
 
 @login_required
@@ -36,24 +40,29 @@ def organizer_dashboard(request):
 @login_required
 def event_organize(request):
     if not request.user.is_organizer:
-        return HttpResponseForbidden("you do not have accesss to this page.")
-    
-    if request.method == 'POST' and request.FILES.get('event_image'):
+        return HttpResponseForbidden("You do not have access to this page.")
+
+    if request.method == 'POST':
         event_title = request.POST.get('event_title')
         event_date = request.POST.get('event_date')
         event_location = request.POST.get('event_location')
         event_description = request.POST.get('event_description')
         organizer = request.user
 
+        event_image = request.FILES.get('event_image')
+        pdf = request.FILES.get('pdf')
+
         Event.objects.create(
-            title = event_title,
-            date = event_date,
-            location = event_location,
-            description = event_description,
-            organizer = organizer,
-            event_image = request.FILES['event_image']
+            title=event_title,
+            date=event_date,
+            location=event_location,
+            description=event_description,
+            organizer=organizer,
+            event_image=event_image,
+            pdf=pdf
         )
         return redirect('event')
+
     return render(request, 'organizer.html')
 
 
@@ -66,7 +75,14 @@ def upload_profile_image(request):
         user.save()
         return redirect('profile')
 
+# @login_required
+# def profile(request):
+#     if request.method == 'POST':
+#         request.user.profile.image = request.FILES.get('image')
+#         request.user.profile.save()
+#         return redirect('profile')
 
+#     return render(request, 'profile.html')
 
 
        

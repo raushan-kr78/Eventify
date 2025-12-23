@@ -22,12 +22,11 @@
                 <li><a href="{% url 'event' %}">Home</a></li>
                 <li><a href="#events">Event</a></li>
                 <li><a href="">Contact Us</a></li>
-                <li><a href="">About Us</a></li>
+                <li><a href="{%url 'about' %}">About Us</a></li>
                 <li>
                     <div class="profile">
                         {% if user.profile_image %}
-                        <img id="profileImage" class="profile-image" src="{{ user.profile_image.url }}"
-                            alt="">
+                        <img id="profileImage" class="profile-image" src="{{ user.profile_image.url }}" alt="">
                         {% else %}
                         <img src="{% static 'images/profile.jpg'%}" alt="profile">
                         {% endif %}
@@ -66,32 +65,38 @@
         </div>
         <section class="events" id="events">
             <div class="events-categories">
-                <ul>
-                    <li><a href="">All</a></li>
-                    <li><a href="">Conference</a></li>
-                    <li><a href="">Sports</a></li>
-                    <li></li>
-                </ul>
+                <h1>Events</h1>
             </div>
             <div class="event-container">
                 {% for event in events %}
 
                 <div class="event-card">
-                    <img src="{{event.event_image.url}}" alt="">
-                    <div class="event-detail">
-                        <h2 class="event-title">{{ event.title }}</h2>
-                        <h4 class="event-date-time">
-                            Date : {{ event.date }}
-                        </h4>
-                        <p class="event-desc">{{event.description}}</p>
-                        <form method="POST" action="{% url 'register_event' event.id %}">
-                            {% csrf_token %}
-                            <button type="submit">Register</button>
-                        </form>
+                    <img src="{{ event.event_image.url }}" alt="Event Image">
+
+                   <div class="card-body">
+                        <div class="card-title"> {{ event.title }}</div>
+                        <div class="card-date"><span>Date:</span> {{ event.date }}</div>
+                        <div class="card-subtitle">{{ event.description }}</div>
+                        {% if event.pdf %}
+                        <div class="card-links">
+                            More details:
+                            <a href="#view">View</a> |
+                            <a href="#download">Download</a>
+                        </div> 
+                        {% else %}
+                            <p><em>No PDF available</em></p>
+                            {% endif %}
+    
+                        <div class="card-actions">
+                           <form method="POST" action="{% url 'register_event' event.id %}">
+                                {% csrf_token %}
+                                <button type="submit">Register</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-                {% endfor %}
 
+                {% endfor %}
             </div>
 
         </section>

@@ -227,32 +227,76 @@ nav ul li a {
     width: 200px;
     border-radius: 5px;
 }
-.event-card .event-detail{
-    margin-left: 20px;
-    margin-top: 20px;
-}
-.event-card .event-detail h2,h4{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin-bottom: 5px;
-    color: #0A2647;
-}
-.event-card .event-detail p{
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    color: #0A2647;
-    font-size: 12px;
-    font-weight: 500;
-}
-.event-card .event-detail button{
-    padding: 5px 10px;
-    margin-top: 30px;
-    font-weight: 600;
-    font-size: 13px;
-    background-color: #0d65b7;
-    color: #0A2647;
-    border: none;
-    border-radius: 3px;
-}
-.event-card .event-detail button:hover{
-    background-color: #418cd3;
-}
 
+
+   .card {
+      width: 320px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.18);
+      overflow: hidden;
+    }
+
+    .card-image img {
+      width: 200px;
+      height: 270px;
+      display: block;
+    }
+
+    .card-body {
+      padding: 16px 18px 20px;
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 4px;
+      text-transform: capitalize;
+    }
+
+    .card-date {
+      font-size: 0.9rem;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+
+    .card-date span {
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .card-subtitle {
+      font-size: 0.95rem;
+      color: #475569;
+      margin-bottom: 10px;
+    }
+
+    .card-links {
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+
+    .card-links a {
+      color: #2563eb;
+      text-decoration: none;
+      margin-right: 10px;
+    }
+
+    .card-links a:hover {
+      text-decoration: underline;
+    }
+
+    .card-actions button {
+      background-color: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .card-actions button:hover {
+      background-color: #1d4ed8;
+    }
